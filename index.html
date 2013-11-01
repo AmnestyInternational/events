@@ -180,7 +180,7 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["Event host", "Event address", "rowNumber"]
+			var optionsJSON = ["name", "address", "rowNumber"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
 		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FF4646")
