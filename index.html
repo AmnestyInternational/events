@@ -21,7 +21,7 @@
 <body>
 	<div id="wrapper">
 		<h1>Write for Rights Events</h1>
-		<div>
+		<!-- <div>
 			<ul class="nav">
 				<li><strong>The collected favorites of those who hack</strong></li>
 				<li><a href="#info">INFO</a> -</li>
@@ -30,6 +30,7 @@
 				<li><a href="http://www.twitter.com/jllord" target="_blank">@JLLORD</a></li>
 			</ul>
 		</div>
+		-->
 		<div class="container">
 			<div id="rightSide">
 				<div id="latestSpot"></div>
@@ -46,7 +47,6 @@
 		<div id="info" class="container">
 			<h3>Contribute!</h3>
 			<div id="theNumberofSpots"></div>
-			<p>This website is hooked up to <a href="https://docs.google.com/spreadsheet/ccc?key=0Ao5u1U6KYND7dFVkcnJRNUtHWUNKamxoRGg4ZzNiT3c#gid=0" target="_blank">this Google Spreadsheet</a>, which I've shared, so click and add your favorite hack spots to the bottom of the list! For the map you'll need to <strong>get the lat and long</strong> of the spot, you can get that <a href="http://www.latlong.net/" target="_blank">here</a>. The locating of these places is helpful, so please try to fill out all the columns.</p> 
 
 			<h3>Info</h3>
 			<p>When I'm visiting a new city I'd like to know which coffee shops have the best vibes, great coffee and are good for hunkering down and having a good hack. Yelp will tell you where the Starbucks is and Foursquare will tell you where your friend's have <em>been</em> - but did they like it and was it a grab in go place or a hack place? Plus, what about the people I don't follow on Foursquare or who can't check-in when in other countries?</p>
@@ -58,34 +58,33 @@
 		</div>
 	</div><!-- end wrapper -->
 
+<!-- Table Header -->
 	<script id="hackSpotsTable" type="text/html">
 		<table>
-		<tr><th class="tHeader">Name</th><th class="tHeader">Address</th><th class="tHeader">City</th><th class="tHeader">State</th><th class="tHeader">Country</th><th class="">Elsewhere</th></tr>
+		<tr><th class="tHeader">Host</th><th class="tHeader">Address</th><th class="tHeader">City</th><th class="tHeader">Province</th><th class="tHeader">Date</th><th class="">Map</th></tr>
 		  {{#rows}}
-		  	<tr id="{{rowNumber}}" class="spotRow"><td>{{name}}</td><td>{{address}}</td><td>{{city}}</td><td>{{state}}</td><td>{{country}}</td><td><a class="button" href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">G Map</a> <a class="button" href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{city}},{{state}}" target="_blank">Yelp</a></td></tr>
-		  	<tr class="hideRow"><td>wifi: {{wifipassword}}</td></tr>
+		  	<tr id="{{rowNumber}}" class="spotRow"><td>{{Event Host}}</td><td>{{Event Address}}</td><td>{{City, town, or municipality}}</td><td>{{Province or territory}}</td><td>{{Event start}}</td><td><a class="button" href="https://maps.google.com/maps?q={{Event Address}}" target="_blank">G Map</a></td></tr>
 		  {{/rows}}
 	  </table>
 	</script>
 
+<!-- Selected Entry -->
 	<script id="latestSpot" type="text/html">
 			{{#rows}}
-				<h4 class="fauxButton">MOST RECENT SPOT</h4>
-				<h2>{{name}}</h2>
-				<p class="colorText">{{address}}<p>
-				<p class="colorText">{{city}}, {{state}} {{#postcode}}, {{postcode}} {{/postcode}}</p>
+				<h4 class="fauxButton">LATEST EVENT</h4>
+				<h3 class="subheader">{{Event host}}</h3>
+				<p class="colorText">{{Event type}}<p>
+				<p>{{Event address}}</a> {{Unit number or room}}<p>
+				<p>{{Event description}}</p>
 				<ul>
-			  	<li><span class="category">Wifi:</span> {{wifipassword}}</li>
-			  	<li><span class="category">Outlets:</span> {{outlets}}</li>
-			  	<li><span class="category">Couch:</span> {{couch}}</li>
-			  	<li><span class="category">Large Table:</span> {{largetable}}</li>
-			  	<li><span class="category">Outdoor Seating:</span> {{outdoorseating}}</li>
-			  	<li><span class="category">Brewing:</span> {{brewing}}</li>
-			  	<li><span class="category">Contributed By:</span> <a href="http://www.twitter.com/{{contributerstwitter}}" target="_blank">@{{contributerstwitter}}</a></li>
-		  	</ul>
-		  	<ul>
-		  		<li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
-		  		<li><a href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{city}},{{state}}" target="_blank">Find on Yelp</a></li>
+			  	<li><span class="category">Host type:</span> {{Host type}}</li>
+			  	<li><span class="category">Start:</span> {{Event start}}</li>
+			  	<li><span class="category">End:</span> {{Event end}}</li>
+			  	<li><span class="category">Host website:</span> <a href="{{Host website (if applicable)}}">{{Host website (if applicable)}}</a></li>
+			  	<li><span class="category">Event page:</span> <a href="{{Event web page (if applicable)}}">{{Event web page (if applicable)}}</a></li>
+			</ul>
+			<ul>
+			  	<li><a href="https://maps.google.com/maps?q={{Event address}}" target="_blank">View in Google Maps</a></li>
 		  	</ul>
 		  {{/rows}}
 	</script>
@@ -100,22 +99,21 @@
 
 	<script id="selectedSpot" type="text/html">
 		{{#rows}}
-			<h4 class="fauxButton">SELECTED SPOT</h4>
-			<h2>{{name}}</h2>
-			<p class="colorText">{{address}}<p>
-			<p class="colorText">{{city}}, {{state}} {{#postcode}}, {{postcode}} {{/postcode}}</p>
+			<h4 class="fauxButton">SELECTED EVENT</h4>
+				<h3 class="subheader">{{Event host}}</h3>
+				<p class="colorText">{{Event type}}<p>
+				<p>{{Event address}}</a> {{Unit number or room}}<p>
+				<p>{{Event description}}</p>
+				<ul>
+			  	<li><span class="category">Host type:</span> {{Host type}}</li>
+			  	<li><span class="category">Start:</span> {{Event start}}</li>
+			  	<li><span class="category">End:</span> {{Event end}}</li>
+			  	<li><span class="category">Host website:</span> <a href="{{Host website (if applicable)}}">{{Host website (if applicable)}}</a></li>
+			  	<li><span class="category">Event page:</span> <a href="{{Event web page (if applicable)}}">{{Event web page (if applicable)}}</a></li>
+			</ul>
 			<ul>
-		  	<li><span class="category">Wifi:</span> {{wifipassword}}</li>
-		  	<li><span class="category">Outlets:</span> {{outlets}}</li>
-		  	<li><span class="category">Couch:</span> {{couch}}</li>
-		  	<li><span class="category">Large Table:</span> {{largetable}}</li>
-		  	<li><span class="category">Outdoor Seating:</span> {{outdoorseating}}</li>
-		  	<li><span class="category">Brewing:</span> {{brewing}}</li>
-	  	</ul>
-	  	<ul>
-	  		<li><a href="https://maps.google.com/maps?q={{address}},{{city}},{{state}}" target="_blank">View in Google Maps</a></li>
-	  		<li><a href="http://www.yelp.com/search?find_desc={{name}}&find_loc={{city}},{{state}}" target="_blank">Find on Yelp</a></li>
-	  	</ul>
+			  	<li><a href="https://maps.google.com/maps?q={{Event address}}" target="_blank">View in Google Maps</a></li>
+		  	</ul>
 	  {{/rows}}
 	</script>
 
