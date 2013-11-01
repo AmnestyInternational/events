@@ -138,7 +138,7 @@
                           var latestCompleteSpot = []
                           var startWithLatestRow = data.reverse()
                           startWithLatestRow.forEach(function(row){
-                                  if (!row.lat || !row.long || !row.host || !row.publish ) return
+                                  if (!row.lat || !row.long || !row.host  || !row.address || !row.publish ) return
                                   else latestCompleteSpot.push(row) 
                           })
                           return latestCompleteSpot[0]
@@ -160,10 +160,10 @@
 
                         // create geoJSON with coordinates and other
                         // useful bits from the original data
-                        var optionsJSON = ["name", "address", "city", "rowNumber"]
+                        var optionsJSON = ["host", "address", "city", "rowNumber"]
                   var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
                   // change the color of the most recently added spot's marker
-                  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FF4646")
+                  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FFFF00")
                   // create map, tilelayer (map background), markers and popups
                         var map = Sheetsee.loadMap("map")
                         Sheetsee.addTileLayer(map, 'examples.map-20v6611k')
@@ -186,7 +186,7 @@
                           $('#' + rowNumber).addClass("selectedRow")
                           // using row number, find that marker in the geoJSON, give it
                           // the selected marker color
-                          matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FF4646")
+                          matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
                          //  var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
                                 // addPopups(map, markerLayer)
                                 // using row number, get the data for the selected spot
