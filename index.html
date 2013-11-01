@@ -61,10 +61,10 @@
 <!-- Table Header -->
 	<script id="hackSpotsTable" type="text/html">
 		<table>
-		<tr><th class="tHeader">Host</th><th class="tHeader">Address</th><th class="tHeader">City</th><th class="tHeader">Province</th><th class="tHeader">Start</th><th class="">Map</th></tr>
+		<tr><th class="tHeader">Host</th><th class="tHeader">City</th><th class="tHeader">Province</th><th class="tHeader">Start</th><th class="">Map</th></tr>
 		  {{#rows}}
 		  	<tr id="{{rowNumber}}" class="spotRow">
-		  	<td>{{host}}</td><td>{{street Address}}</td><td>{{city, town, or municipality}}</td><td>{{province or territory}}</td><td>{{event start}}</td><td><a class="button" href="https://maps.google.com/maps?q={{Address}}" target="_blank">G Map</a></td></tr>
+		  	<td>{{host}}</td><td>{{city}}</td><td>{{province}}</td><td>{{start}}</td><td><a class="button" href="https://maps.google.com/maps?q={{Address}}" target="_blank">G Map</a></td></tr>
 		  {{/rows}}
 	  </table>
 	</script>
@@ -75,14 +75,14 @@
 				<h4 class="fauxButton">LATEST EVENT</h4>
 				<h3 class="subheader">{{host}}</h3>
 				<p class="colorText">{{eventtype}}<p>
-				<p>{{address}}</a> {{Unit number or room}}<p>
+				<h4>{{address}}</a> {{room}}<p>
 				<p>{{description}}</p>
 				<ul>
 			  	<li><span class="category">Host type:</span> {{hosttype}}</li>
-			  	<li><span class="category">Start:</span> {{event start}}</li>
-			  	<li><span class="category">End:</span> {{event end}}</li>
-			  	<li><span class="category">Host website:</span> <a href="{{Host website (if applicable)}}">{{host website (if applicable)}}</a></li>
-			  	<li><span class="category">Event page:</span> <a href="{{Event web page (if applicable)}}">{{event web page (if applicable)}}</a></li>
+			  	<li><span class="category">Start:</span> {{start}}</li>
+			  	<li><span class="category">End:</span> {{end}}</li>
+			  	<li><span class="category">Host website:</span> <a href="{{Host website (if applicable)}}">{{website}}</a></li>
+			  	<li><span class="category">Event page:</span> <a href="{{Event web page (if applicable)}}">{{webpage}}</a></li>
 			</ul>
 			<ul>
 			  	<li><a href="https://maps.google.com/maps?q={{address}}" target="_blank">View in Google Maps</a></li>
@@ -103,14 +103,14 @@
 			<h4 class="fauxButton">SELECTED EVENT</h4>
 				<h3 class="subheader">{{host}}</h3>
 				<p class="colorText">{{eventtype}}<p>
-				<p>{{address}}</a> {{Unit number or room}}<p>
+				<h4>{{address}}</a> {{room}}<p>
 				<p>{{description}}</p>
 				<ul>
 			  	<li><span class="category">Host type:</span> {{hosttype}}</li>
-			  	<li><span class="category">Start:</span> {{Event start}}</li>
-			  	<li><span class="category">End:</span> {{Event end}}</li>
-			  	<li><span class="category">Host website:</span> <a href="{{Host website (if applicable)}}">{{Host website (if applicable)}}</a></li>
-			  	<li><span class="category">Event page:</span> <a href="{{Event web page (if applicable)}}">{{Event web page (if applicable)}}</a></li>
+			  	<li><span class="category">Start:</span> {{start}}</li>
+			  	<li><span class="category">End:</span> {{end}}</li>
+			  	<li><span class="category">Host website:</span> <a href="{{Host website (if applicable)}}">{{website}}</a></li>
+			  	<li><span class="category">Event page:</span> <a href="{{Event web page (if applicable)}}">{{webpage}}</a></li>
 			</ul>
 			<ul>
 			  	<li><a href="https://maps.google.com/maps?q={{address}}" target="_blank">View in Google Maps</a></li>
