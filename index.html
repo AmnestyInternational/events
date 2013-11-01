@@ -64,7 +64,7 @@
 		<tr><th class="tHeader">Host</th><th class="tHeader">Address</th><th class="tHeader">City</th><th class="tHeader">Province</th><th class="tHeader">Start</th><th class="">Map</th></tr>
 		  {{#rows}}
 		  	<tr id="{{rowNumber}}" class="spotRow">
-		  	<td>{{event Host}}</td><td>{{street Address}}</td><td>{{city, town, or municipality}}</td><td>{{province or territory}}</td><td>{{event start}}</td><td><a class="button" href="https://maps.google.com/maps?q={{Event Address}}" target="_blank">G Map</a></td></tr>
+		  	<td>{{eventhost}}</td><td>{{street Address}}</td><td>{{city, town, or municipality}}</td><td>{{province or territory}}</td><td>{{event start}}</td><td><a class="button" href="https://maps.google.com/maps?q={{Event Address}}" target="_blank">G Map</a></td></tr>
 		  {{/rows}}
 	  </table>
 	</script>
@@ -73,7 +73,7 @@
 	<script id="latestEvent" type="text/html">
 			{{#rows}}
 				<h4 class="fauxButton">LATEST EVENT</h4>
-				<h3 class="subheader">{{event host}}</h3>
+				<h3 class="subheader">{{eventhost}}</h3>
 				<p class="colorText">{{event type}}<p>
 				<p>{{event address}}</a> {{Unit number or room}}<p>
 				<p>{{event description}}</p>
@@ -101,7 +101,7 @@
 	<script id="selectedEvent" type="text/html">
 		{{#rows}}
 			<h4 class="fauxButton">SELECTED EVENT</h4>
-				<h3 class="subheader">{{Event host}}</h3>
+				<h3 class="subheader">{{eventhost}}</h3>
 				<p class="colorText">{{Event type}}<p>
 				<p>{{Event address}}</a> {{Unit number or room}}<p>
 				<p>{{Event description}}</p>
@@ -146,7 +146,7 @@
 			  $('#latestEvent').css("display", "none")
 			  $('#selectedEvent').html(selectedEvent).css("display", "inline")
 			  var selectedCoords = [dataElement[0].lat, dataElement[0].long]
-			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FF4646")
+			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
 			  var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
 				addPopups(map, markerLayer)
 			  map.panTo(selectedCoords, 13)
@@ -181,7 +181,7 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["Event host", "Event address", "rowNumber"]
+			var optionsJSON = ["eventhost", "Event address", "rowNumber"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
 		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FFFF00")
