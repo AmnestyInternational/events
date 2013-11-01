@@ -104,32 +104,32 @@
 			Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } ) 
 		}) 
 
-		// so so messy
+		// so long, so messy
 
-	  function showInfo(data) {
-	  	gData = data
-	  	// make the table, and the search bar
-	  	Sheetsee.makeTable(gData, "#hackSpotsTable")
-	  	Sheetsee.initiateTableFilter(gData, "#tableFilter", "#hackSpotsTable")
+          function showInfo(data) {
+                  gData = data
+                  // make the table, and the search bar
+                  Sheetsee.makeTable(gData, "#hackSpotsTable")
+                  Sheetsee.initiateTableFilter(gData, "#tableFilter", "#hackSpotsTable")
 
-	  	// when someone clicks on a row, highlight it and
-	  	// re-center the map
-	  	$('.spotRow').live("click", function(event) {
-	  		$('.spotRow').removeClass("selectedRow")
-	 			var rowNumber = $(this).closest("tr").attr("id")
-	 			$('#' + rowNumber).addClass("selectedRow")
-	 			var dataElement = Sheetsee.getMatches(gData, "true", "publish")
-	 			var selectedSpot = ich.selectedSpot({
-				  rows: dataElement
-			  })
-			  $('#latestSpot').css("display", "none")
-			  $('#selectedSpot').html(selectedSpot).css("display", "inline")
-			  var selectedCoords = [dataElement[0].lat, dataElement[0].long]
-			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
-			  var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
-				addPopups(map, markerLayer)
-			  map.panTo(selectedCoords, 13)
-	 		})
+                  // when someone clicks on a row, highlight it and
+                  // re-center the map
+                  $('.spotRow').live("click", function(event) {
+                          $('.spotRow').removeClass("selectedRow")
+                                 var rowNumber = $(this).closest("tr").attr("id")
+                                 $('#' + rowNumber).addClass("selectedRow")
+                                 var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
+                                 var selectedSpot = ich.selectedSpot({
+                                  rows: dataElement
+                          })
+                          $('#latestSpot').css("display", "none")
+                          $('#selectedSpot').html(selectedSpot).css("display", "inline")
+                          var selectedCoords = [dataElement[0].lat, dataElement[0].long]
+                          matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
+                          var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
+                                addPopups(map, markerLayer)
+                          map.panTo(selectedCoords, 13)
+                         })
 
 	  	// so that the first map and info that loads
 	  	// is complete and doesn't show rows that are
@@ -160,7 +160,7 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["host", "address", "city", "start", "rowNumber", "publish"]
+			var optionsJSON = ["host", "address", "city", "start", "rowNumber"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
 		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FFFF00")
