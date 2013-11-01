@@ -125,7 +125,7 @@
                           $('#latestSpot').css("display", "none")
                           $('#selectedSpot').html(selectedSpot).css("display", "inline")
                           var selectedCoords = [dataElement[0].lat, dataElement[0].long]
-                          matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FF4646")
+                          matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
                           var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
                                 addPopups(map, markerLayer)
                           map.panTo(selectedCoords, 13)
