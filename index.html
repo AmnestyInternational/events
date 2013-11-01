@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>WRite for Rights Events</title>
+		<title>Write for Rights Events</title>
 		<script type="text/javascript" src="js/ICanHaz.js"></script> 
 		<script type="text/javascript" src='http://api.tiles.mapbox.com/mapbox.js/v1.4.0/mapbox.js'></script>
 		<script type="text/javascript" src='js/jquery.js '></script>
@@ -49,7 +49,6 @@
 	  </table>
 	</script>
 
-<!-- Selected Entry -->
 	<script id="latestSpot" type="text/html">
 			{{#rows}}
 				<h4 class="fauxButton">LATEST EVENT</h4>
@@ -139,7 +138,7 @@
 	  		var latestCompleteSpot = []
 	  		var startWithLatestRow = data.reverse()
 	  		startWithLatestRow.forEach(function(row){
-	  			if (!row.lat || !row.long || !row.host ) return
+	  			if (!row.lat || !row.long || !row.host || !row.publish ) return
 	  			else latestCompleteSpot.push(row) 
 	  		})
 	  		return latestCompleteSpot[0]
@@ -161,7 +160,7 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["host", "address", "city", "rowNumber"]
+			var optionsJSON = ["host", "address", "city", "start", "rowNumber", "publish"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
 		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FFFF00")
