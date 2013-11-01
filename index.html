@@ -33,8 +33,8 @@
 		-->
 		<div class="container">
 			<div id="rightSide">
-				<div id="latestEvent"></div>
-				<div id="selectedEvent"></div>
+				<div id="latestSpot"></div>
+				<div id="selectedSpot"></div>
 			</div>
 			<div id="map"></div>
 		</div>
@@ -46,7 +46,7 @@
 		</div>
 		<div id="info" class="container">
 			<h3>Contribute!</h3>
-			<div id="thenumberofEvents"></div>
+			<div id="thenumberofSpots"></div>
 
 			<h3>Info</h3>
 			<p>When I'm visiting a new city I'd like to know which coffee shops have the best vibes, great coffee and are good for hunkering down and having a good hack. Yelp will tell you where the Starbucks is and Foursquare will tell you where your friend's have <em>been</em> - but did they like it and was it a grab in go place or a hack place? Plus, what about the people I don't follow on Foursquare or who can't check-in when in other countries?</p>
@@ -70,7 +70,7 @@
 	</script>
 
 <!-- Selected Entry -->
-	<script id="latestEvent" type="text/html">
+	<script id="latestSpot" type="text/html">
 			{{#rows}}
 				<h4 class="fauxButton">LATEST EVENT</h4>
 				<h3 class="subheader">{{host}}</h3>
@@ -90,7 +90,7 @@
 		  {{/rows}}
 	</script>
 
-	<script id="thenumberofEvents" type="text/html">
+	<script id="thenumberofSpots" type="text/html">
 		<p><strong><span class="red-text">{{numberofEvents}}</span> events strong!</p>
 	</script>
 
@@ -98,7 +98,7 @@
 		<h2>{{ name }}</h2>
 	</script>
 
-	<script id="selectedEvent" type="text/html">
+	<script id="selectedSpot" type="text/html">
 		{{#rows}}
 			<h4 class="fauxButton">SELECTED EVENT</h4>
 				<h3 class="subheader">{{host}}</h3>
@@ -140,11 +140,11 @@
 	 			var rowNumber = $(this).closest("tr").attr("id")
 	 			$('#' + rowNumber).addClass("selectedRow")
 	 			var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
-	 			var selectedEvent = ich.selectedEvent({
+	 			var selectedSpot = ich.selectedSpot({
 				  rows: dataElement
 			  })
-			  $('#latestEvent').css("display", "none")
-			  $('#selectedEvent').html(selectedEvent).css("display", "inline")
+			  $('#latestSpot').css("display", "none")
+			  $('#selectedSpot').html(selectedSpot).css("display", "inline")
 			  var selectedCoords = [dataElement[0].lat, dataElement[0].long]
 			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
 			  var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
@@ -168,11 +168,11 @@
 	  	// find the latest spot with the most important
 	  	// info filled in (to prevent map breaking if
 	  	// someone is currently editing spreadsheet)
-	  	var thelatestEvent = findLatestCompleteSpot(gData)
-		  var latestEvent = ich.latestEvent({
-			   rows: thelatestEvent
+	  	var thelatestSpot = findLatestCompleteSpot(gData)
+		  var latestSpot = ich.latestSpot({
+			   rows: thelatestSpot
 		  })
-			$('#latestEvent').html(latestEvent)
+			$('#latestSpot').html(latestSpot)
 
 			function highlightLastMarker(geoJSON, highlightColor) {
 				geoJSON[0].properties["marker-color"] = highlightColor
@@ -213,11 +213,11 @@
 				// using row number, get the data for the selected spot
 			  var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
 			  // take those details and re-write the selected spot section
-				var selectedEvent = ich.selectedEvent({
+				var selectedSpot = ich.selectedSpot({
 				  rows: dataElement
 			 	}) 
-			  $('#latestEvent').css("display", "none")
-			  $('#selectedEvent').html(selectedEvent).css("display", "inline")
+			  $('#latestSpot').css("display", "none")
+			  $('#selectedSpot').html(selectedSpot).css("display", "inline")
 			  })
 			}
 
@@ -225,16 +225,16 @@
 				$('.spotRow').removeClass("selectedRow")
 				markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
 				addPopups(map, markerLayer)
-				$('#latestEvent').css("display", "inline")
-			  $('#selectedEvent').css("display", "none")
+				$('#latestSpot').css("display", "inline")
+			  $('#selectedSpot').css("display", "none")
 			})
 
 			// find total number of spots added
 			var numberofEvents = gData.length
-			var thenumberofEvents = ich.thenumberofEvents({
+			var thenumberofSpots = ich.thenumberofSpots({
 		  	numberofEvents: numberofEvents
 	 	 	})
-			$('#thenumberofEvents').html(thenumberofEvents)
+			$('#thenumberofSpots').html(thenumberofSpots)
 
 			function matchGeoJSONbyRowNumber(rowNumber, geoJSON, gdata, highlightColor) {
 		 		geoJSON.forEach(function (d) {
