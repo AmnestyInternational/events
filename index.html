@@ -118,7 +118,7 @@
 	  		$('.spotRow').removeClass("selectedRow")
 	 			var rowNumber = $(this).closest("tr").attr("id")
 	 			$('#' + rowNumber).addClass("selectedRow")
-	 			var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
+	 			var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber", "publish")
 	 			var selectedSpot = ich.selectedSpot({
 				  rows: dataElement
 			  })
