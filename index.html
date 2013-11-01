@@ -61,7 +61,7 @@
 <!-- Table Header -->
 	<script id="hackSpotsTable" type="text/html">
 		<table>
-		<tr><th class="tHeader">Host</th><th class="tHeader">City</th><th class="tHeader">Province</th><th class="tHeader">Start</th><th class="">Map</th></tr>
+		<tr><th class="tHeader">Host</th><th class="tHeader">City</th><th class="tHeader">Province</th><th class="tHeader">Date</th><th class="">Map</th></tr>
 		  {{#rows}}
 		  	<tr id="{{rowNumber}}" class="spotRow">
 		  	<td>{{host}}</td><td>{{city}}</td><td>{{province}}</td><td>{{start}}</td><td><a class="button" href="https://maps.google.com/maps?q={{address}}" target="_blank">G Map</a></td></tr>
@@ -181,7 +181,7 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["host", "Event address", "rowNumber"]
+			var optionsJSON = ["host", "address", "rowNumber"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
 		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FFFF00")
