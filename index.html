@@ -119,8 +119,6 @@
 	 			var rowNumber = $(this).closest("tr").attr("id")
 	 			$('#' + rowNumber).addClass("selectedRow")
 	 			var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
-		 			dataElement.forEach(function(row){
-		  			if (!row.lat || !row.long || !row.host || !row.publish ) return
 	 			var selectedSpot = ich.selectedSpot({
 				  rows: dataElement
 			  })
