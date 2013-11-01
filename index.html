@@ -125,7 +125,7 @@
 			Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } ) 
 		}) 
 
-		// so long, so messy
+		// so so messy
 
 	  function showInfo(data) {
 	  	gData = data
@@ -145,7 +145,7 @@
 			  })
 			  $('#latestSpot').css("display", "none")
 			  $('#selectedSpot').html(selectedSpot).css("display", "inline")
-			  var selectedCoords = [dataElement[0].lat, dataElement[0].long]
+			  var selectedCoords = [dataElement[0].lat, dataElement[0].geo_longitude]
 			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
 			  var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
 				addPopups(map, markerLayer)
@@ -159,7 +159,7 @@
 	  		var latestCompleteSpot = []
 	  		var startWithLatestRow = data.reverse()
 	  		startWithLatestRow.forEach(function(row){
-	  			if (!row.lat || !row.long || !row.host ) return
+	  			if (!row.geo_latitude || !row.geo_longitude || !row.host ) return
 	  			else latestCompleteSpot.push(row) 
 	  		})
 	  		return latestCompleteSpot[0]
