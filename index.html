@@ -139,11 +139,11 @@
 	 			var rowNumber = $(this).closest("tr").attr("id")
 	 			$('#' + rowNumber).addClass("selectedRow")
 	 			var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
-	 			var selectedSpot = ich.selectedSpot({
+	 			var selectedEvent = ich.selectedEvent({
 				  rows: dataElement
 			  })
-			  $('#latestSpot').css("display", "none")
-			  $('#selectedSpot').html(selectedSpot).css("display", "inline")
+			  $('#latestEvent').css("display", "none")
+			  $('#selectedEvent').html(selectedEvent).css("display", "inline")
 			  var selectedCoords = [dataElement[0].lat, dataElement[0].long]
 			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FF4646")
 			  var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
@@ -158,7 +158,7 @@
 	  		var latestCompleteSpot = []
 	  		var startWithLatestRow = data.reverse()
 	  		startWithLatestRow.forEach(function(row){
-	  			if (!row.lat || !row.long || !row.Event host || !row.Event address || !row.City, town, or municipality || !row.Province or territory || !row.Event start ) return
+	  			if (!row.lat || !row.long ) return
 	  			else latestCompleteSpot.push(row) 
 	  		})
 	  		return latestCompleteSpot[0]
@@ -167,11 +167,11 @@
 	  	// find the latest spot with the most important
 	  	// info filled in (to prevent map breaking if
 	  	// someone is currently editing spreadsheet)
-	  	var theLatestSpot = findLatestCompleteSpot(gData)
-		  var latestSpot = ich.latestSpot({
-			   rows: theLatestSpot
+	  	var thelatestEvent = findLatestCompleteSpot(gData)
+		  var latestEvent = ich.latestEvent({
+			   rows: thelatestEvent
 		  })
-			$('#latestSpot').html(latestSpot)
+			$('#latestEvent').html(latestEvent)
 
 			function highlightLastMarker(geoJSON, highlightColor) {
 				geoJSON[0].properties["marker-color"] = highlightColor
@@ -180,10 +180,10 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["name", "address", "rowNumber"]
+			var optionsJSON = ["Event host", "Event address", "rowNumber"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
-		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FF4646")
+		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FFFF00")
 		  // create map, tilelayer (map background), markers and popups
 			var map = Sheetsee.loadMap("map")
 			Sheetsee.addTileLayer(map, 'examples.map-20v6611k')
@@ -212,11 +212,11 @@
 				// using row number, get the data for the selected spot
 			  var dataElement = Sheetsee.getMatches(gData, rowNumber, "rowNumber")
 			  // take those details and re-write the selected spot section
-				var selectedSpot = ich.selectedSpot({
+				var selectedEvent = ich.selectedEvent({
 				  rows: dataElement
 			 	}) 
-			  $('#latestSpot').css("display", "none")
-			  $('#selectedSpot').html(selectedSpot).css("display", "inline")
+			  $('#latestEvent').css("display", "none")
+			  $('#selectedEvent').html(selectedEvent).css("display", "inline")
 			  })
 			}
 
@@ -224,8 +224,8 @@
 				$('.spotRow').removeClass("selectedRow")
 				markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
 				addPopups(map, markerLayer)
-				$('#latestSpot').css("display", "inline")
-			  $('#selectedSpot').css("display", "none")
+				$('#latestEvent').css("display", "inline")
+			  $('#selectedEvent').css("display", "none")
 			})
 
 			// find total number of spots added
