@@ -33,8 +33,8 @@
 		-->
 		<div class="container">
 			<div id="rightSide">
-				<div id="latestSpot"></div>
-				<div id="selectedSpot"></div>
+				<div id="latestEvent"></div>
+				<div id="selectedEvent"></div>
 			</div>
 			<div id="map"></div>
 		</div>
@@ -69,7 +69,7 @@
 	</script>
 
 <!-- Selected Entry -->
-	<script id="latestSpot" type="text/html">
+	<script id="latestEvent" type="text/html">
 			{{#rows}}
 				<h4 class="fauxButton">LATEST EVENT</h4>
 				<h3 class="subheader">{{Event host}}</h3>
@@ -97,7 +97,7 @@
 		<h2>{{ name }}</h2>
 	</script>
 
-	<script id="selectedSpot" type="text/html">
+	<script id="selectedEvent" type="text/html">
 		{{#rows}}
 			<h4 class="fauxButton">SELECTED EVENT</h4>
 				<h3 class="subheader">{{Event host}}</h3>
@@ -158,7 +158,7 @@
 	  		var latestCompleteSpot = []
 	  		var startWithLatestRow = data.reverse()
 	  		startWithLatestRow.forEach(function(row){
-	  			if (!row.lat || !row.long || !row.name || !row.address || !row.city || !row.state ) return
+	  			if (!row.lat || !row.long || !row.Event host || !row.Event address || !row.City, town, or municipality || !row.Province or territory || !row.Event start ) return
 	  			else latestCompleteSpot.push(row) 
 	  		})
 	  		return latestCompleteSpot[0]
@@ -180,7 +180,7 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["name", "address", "city", "rowNumber"]
+			var optionsJSON = ["Event host", "Event address", "rowNumber"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
 		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FF4646")
@@ -206,7 +206,7 @@
 			  $('#' + rowNumber).addClass("selectedRow")
 			  // using row number, find that marker in the geoJSON, give it
 			  // the selected marker color
-			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FF4646")
+			  matchGeoJSONbyRowNumber(rowNumber, geoJSON, gData, "#FFFF00")
 			 //  var markerLayer = Sheetsee.addMarkerLayer(geoJSON, map, 13)
 				// addPopups(map, markerLayer)
 				// using row number, get the data for the selected spot
