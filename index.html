@@ -159,7 +159,7 @@
 	  		var latestCompleteSpot = []
 	  		var startWithLatestRow = data.reverse()
 	  		startWithLatestRow.forEach(function(row){
-	  			if (!row.lat || !row.long ) return
+	  			if (!row.lat || !row.long || !row.name || !row.address || !row.city || !row.province ) return
 	  			else latestCompleteSpot.push(row) 
 	  		})
 	  		return latestCompleteSpot[0]
@@ -181,7 +181,7 @@
 
 			// create geoJSON with coordinates and other
 			// useful bits from the original data
-			var optionsJSON = ["host", "address", "rowNumber"]
+			var optionsJSON = ["host", "address", "city", "rowNumber"]
 		  var geoJSONnoHL = Sheetsee.createGeoJSON(gData, optionsJSON)
 		  // change the color of the most recently added spot's marker
 		  var geoJSON = highlightLastMarker(geoJSONnoHL, "#FFFF00")
