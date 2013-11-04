@@ -19,8 +19,8 @@
 		<link rel="stylesheet" href="css/MarkerCluster.Default.css" />
 	</head>
 <body>
+<div class="page">
 <!-- SHEETSEE -->
-
 	<div id="wrapper">
 		<div class="container">
 			<div id="rightSide">
@@ -57,10 +57,10 @@
 			{{#rows}}
 				<h4 class="fauxButton">LATEST EVENT</h4>
 				<h3 class="subheader">{{host}}</h3>
-				<h4 class="subheader colorText">{{eventtype}}</h4>
 				<p><em>{{address}}</em> {{room}}<p>
 				<p>{{description}}</p>
 				<ul>
+				<li><span class="category">Host type:</span> {{eventtype}}</li>
 			  	<li><span class="category">Host type:</span> {{hosttype}}</li>
 			  	<li><span class="category">Start:</span> {{start}}</li>
 			  	<li><span class="category">End:</span> {{end}}</li>
@@ -240,6 +240,6 @@
         </script>
 
         <!-- END SHEETSEE -->
-
+</div>
 </body>
 </html>
