@@ -31,11 +31,11 @@
 			<span class="noMatches">no matches</span>
 			<div id="hackSpotsTable"></div>
 		</div>
-		<div id="info" class="container">
+		<!--<div id="info" class="container">
 			<div id="thenumberofSpots"></div>
 			<h3 class="subheader">Info</h3>
 			<p></p>
-		</div>
+		</div>-->
 	</div><!-- end wrapper -->
 
 <!-- Table Header -->
@@ -101,7 +101,7 @@
 	  document.addEventListener('DOMContentLoaded', function() {
 	  	var gData
 	  	var URL = "0Am-bV1MBwPQHdFdLZGNlb2RBMTZvNWUyXzVtRmdvZVE"
-			Tabletop.init( { key: URL, callback: showInfo, simpleSheet: true } ) 
+			Tabletop.init( { key: URL, callback: showInfo, simpleSheet: false } ) 
 		}) 
 
 		// so long, so messy
