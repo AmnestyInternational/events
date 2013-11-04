@@ -31,12 +31,10 @@ code {font-family: "Consolas", "Ubuntu Mono", monospace; line-height: 22px; font
 ::selection {background: #E5FF1D;} 
 ::-moz-selection {background: #E5FF1D;}
 
-/*
-ul.nav {list-style: none; margin: 0px; padding: 0px;}
-ul.nav li {display: inline; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding-right: 4px;}
-ul.nav li a {border: none;}
-ul.nav li a:hover {border-bottom: 1px #FD9393 solid;}
-*/
+ul.inline-nav {list-style: none; margin: 0px; padding: 0px;}
+ul.inline-nav li {display: inline; font-size: 10px; letter-spacing: .1em; padding-right: 4px;}
+ul.inline-nav li a {border: none;}
+ul.inline-nav li a:hover {border-bottom: 1px #004c84 solid;}
 
 #wrapper {margin: 0px auto; max-width: 950px; padding-top: 10px; /*margin-left: 250px;*/}
 
@@ -51,7 +49,7 @@ ul.nav li a:hover {border-bottom: 1px #FD9393 solid;}
 #rightSide {height: 450px; max-width: 590px; width: 100%; float: right; padding-top: 5px;}
 #selectedSpot {display: none;}
 #latestSpot ul, #selectedSpot ul {list-style: none; margin-top: 12px 0px; padding: 0px;}
-.category {text-transform: uppercase; font-size: 9px; letter-spacing: .2em; padding-right: 6px;}
+.category {text-transform: uppercase; font-size: 14px; letter-spacing: .2em; padding-right: 6px;}
 
 #info p {font-size: 14px; padding: 4px; line-height: 19px; font-weight: 300;}
 #info {border-top: 4px #F8F8F8 solid;}
