@@ -32,7 +32,7 @@ code {font-family: "Consolas", "Ubuntu Mono", monospace; line-height: 22px; font
 ::-moz-selection {background: #E5FF1D;}
 
 ul.inline-nav {list-style: none; margin: 0px; padding: 0px;}
-ul.inline-nav li {display: inline; font-size: 10px; letter-spacing: .1em; padding-right: 4px;}
+ul.inline-nav li {display: inline; font-size: 14px; letter-spacing: .1em; padding-right: 4px;}
 ul.inline-nav li a {border: none;}
 ul.inline-nav li a:hover {border-bottom: 1px #004c84 solid;}
 
