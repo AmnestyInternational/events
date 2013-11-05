@@ -1,3 +1,5 @@
+![Amnesty International logotype and logo banner](http://amnesty.ca/sites/default/files/ai-lockup-2c-banner.png)
+
 Write for Rights Events
 =======================
 
